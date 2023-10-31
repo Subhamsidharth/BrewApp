@@ -2,3 +2,4 @@
 /.env
 /config/privateKey.Key
 /package-lock.json
+access.log

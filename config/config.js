@@ -1,7 +1,6 @@
 import fs from "fs"
 import path from "path"
 import dotenv from "dotenv"
-import { URL } from 'url';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path'; 
 
