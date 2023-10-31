@@ -19,7 +19,7 @@ const userRegister = async (req, res) => {
         if (userInfo) {
 
             sendEmail(userInfo)
-            return res.status(201).send({ status: true, msg: "Successfully registered,Please verify otp" });
+            return res.status(201).send({ status: true, msg: "Successfully registered,Please verify otp", data: userInfo.otp });
         }
         return res.status(400).send({ status: false, msg: "Something went wrong" });
     } catch (error) {
