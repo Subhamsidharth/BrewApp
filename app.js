@@ -79,7 +79,9 @@ app.use(morgan(
 
 app.use("/user", userRouter)
 app.use("/book", bookRouter)
-
+app.get('/check', (req, res) => {
+    return res.send("welcome")
+})
 
 app.listen(process.env.PORT || 3000, () => {
     return console.log(`Express is running on port 🤣 ${process.env.PORT || 3000}`)
