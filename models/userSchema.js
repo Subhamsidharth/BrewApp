@@ -42,9 +42,9 @@ const userSchema = mongoose.Schema({
         type: String,
         length: 6
     },
-    status:{
-        type:Number,
-        default:2
+    status: {
+        type: Number,
+        default: 1
     }
 }, {
     timestamps: true,

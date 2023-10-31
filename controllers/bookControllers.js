@@ -9,7 +9,7 @@ const createBook = async (req, res) => {
         const bookInfo = await Book.create(data)
         if (bookInfo) {
 
-            return res.status(201).send({ status: true, msg: "Successfully created one book" });
+            return res.status(201).send({ status: true, msg: "Successfully created one book", data: bookInfo._id });
         }
         return res.status(400).send({ status: false, msg: "Something went wrong" });
     } catch (error) {
@@ -25,10 +25,10 @@ const updateBook = async (req, res) => {
 
         const checkExist = await Book.findById({ _id: id })
         if (!checkExist) {
-            return res.status(404).status({ status: false, msg: "Not found" })
+            return res.status(404).send({ status: false, msg: "Not found" })
         }
         if (checkExist.userId.toString() !== req.userInfo) {
-            return res.status(403).status({ status: false, msg: "Access denied" })
+            return res.status(403).send({ status: false, msg: "Access denied" })
         }
         const bookInfo = await Book.findByIdAndUpdate({ _id: id }, data)
         if (bookInfo.modifiedCount !== 0 && bookInfo.matchedCount !== 0) {
@@ -47,10 +47,10 @@ const deleteBook = async (req, res) => {
 
         const checkExist = await Book.findById({ _id: id })
         if (!checkExist) {
-            return res.status(404).status({ status: false, msg: "Not found" })
+            return res.status(404).send({ status: false, msg: "Not found" })
         }
         if (checkExist.userId.toString() !== req.userInfo) {
-            return res.status(403).status({ status: false, msg: "Access denied" })
+            return res.status(403).send({ status: false, msg: "Access denied" })
         }
         const bookInfo = await Book.findByIdAndUpdate({ _id: id }, { status: 0 })
         if (bookInfo.modifiedCount !== 0 && bookInfo.matchedCount !== 0) {
@@ -88,4 +88,4 @@ const getAllBooks = async (req, res) => {
 }
 
 
-export {createBook,updateBook,deleteBook,getSingleBook,getAllBooks}
+export { createBook, updateBook, deleteBook, getSingleBook, getAllBooks }

@@ -37,6 +37,16 @@ mongoose.connect(CONFIG.DB_URL, { useNewUrlParser: true })
         console.log(err)
     })
 
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+
+        res.send({ response: "invalid JSON input" }) // Handling JSON parsing error
+    } else {
+
+        next(err); // Forwarding other errors to the next middleware
+    }
+});
+
 const paths = path.join(__dirname, 'access.log')
 const accessLogStream = fs.createWriteStream(paths, { flags: 'a' })
 
