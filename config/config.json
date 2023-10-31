@@ -1,0 +1,12 @@
+{
+    "port": "4008",
+    "mongodb": {
+      "database": "brewapps",
+      "username":"SubhamSidharth",
+      "password":"FAaYMraBoDJ1joqW"
+    },
+    "settings": {
+      "apiUrl": "192.168.0.200:4008/",
+      "uiUrl": "http://localhost:5173"
+    }
+  }
